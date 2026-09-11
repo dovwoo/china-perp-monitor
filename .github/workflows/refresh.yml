@@ -27,6 +27,8 @@ jobs:
         with:
           node-version: '24'
       - name: Refresh public data, retaining original times on failure
+        env:
+          CHINA_PERP_COLLECTOR_TOKEN: ${{ secrets.CHINA_PERP_COLLECTOR_TOKEN }}
         run: node scripts/collect.mjs public/monitor.json https://dovwoo.github.io/china-perp-monitor/monitor.json
       - uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
         with:
