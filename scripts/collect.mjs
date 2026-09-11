@@ -2218,8 +2218,10 @@ async function collectSnapshot(before) {
 				method: "POST",
 				headers: {
 					Authorization: `Bearer ${token}`,
-					"x-region": regionalRegion
+					"x-region": regionalRegion,
+					"Content-Type": "application/json"
 				},
+				body: JSON.stringify(publicSnapshot(before)),
 				signal: AbortSignal.timeout(65e3)
 			});
 			if (!response.ok) throw Error(`Regional collector HTTP ${response.status}`);
